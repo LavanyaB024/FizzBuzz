@@ -8,8 +8,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IFizzBuzzService, FizzBuzzService>();
-builder.Services.AddSingleton<IFizzBuzzServiceFactory, FizzBuzzServiceFactory>();
-
+builder.Services.AddTransient<IFizzBuzzServiceFactory, FizzBuzzServiceFactory>();
+builder.Services.AddTransient<IFizzBuzzProcessor, FizzBuzzProcessor>();
+builder.Services.AddTransient<IFizzBuzzValidator, FizzBuzzValidator>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

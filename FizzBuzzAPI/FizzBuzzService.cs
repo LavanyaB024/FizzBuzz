@@ -8,6 +8,14 @@ namespace FizzBuzzAPI
 {
     public class FizzBuzzService : IFizzBuzzService
     {
+        private readonly IFizzBuzzProcessor _processor;
+        private readonly IFizzBuzzValidator _validator;
+
+        public FizzBuzzService(IFizzBuzzProcessor processor, IFizzBuzzValidator validator)
+        {
+            _processor = processor;
+            _validator = validator;
+        }
         public List<FizzBuzzResponse> GetFizzBuzzListOfValues(string[] values)
         {
             List<FizzBuzzResponse> responseList = new();
@@ -17,17 +25,17 @@ namespace FizzBuzzAPI
                 {
                     FizzBuzzResponse response = new();
                     int i;
-                    if (int.TryParse(value, out i))
+                    if (_validator.TryValidate(value, out int validatedValue))
                     {
-                        var result = GetFizzBuzzValue(value);
+                        var result = _processor.GetFizzBuzzValue(validatedValue);
                         if (result == FizzBuzzConstants.FizzBuzz || result == FizzBuzzConstants.Fizz || result == FizzBuzzConstants.Buzz)
                         {
                             response.Result = result;
                         }
                         else
                         {
-                            response.Result = value.ToString();
-                            response.Operation = new List<string> { $"Divided {value} by 3", $"Divided {value} by 5" };
+                            response.Result = validatedValue.ToString();
+                            response.Operation = new List<string> { $"Divided {validatedValue} by 3", $"Divided {validatedValue} by 5" };
                         }
                     }
                     else
@@ -46,15 +54,16 @@ namespace FizzBuzzAPI
             }
             return responseList;
         }
+
         private string GetFizzBuzzValue(string value)
         {
             int inputValue = Convert.ToInt32(value);
 
-            if (inputValue % 15 == 0) 
+            if (inputValue % 15 == 0)
                 return "FizzBuzz";
             if (inputValue % 3 == 0)
                 return "Fizz";
-            if (inputValue % 5 == 0) 
+            if (inputValue % 5 == 0)
                 return "Buzz";
 
             return value.ToString();
