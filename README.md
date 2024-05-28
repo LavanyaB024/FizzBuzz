@@ -12,7 +12,6 @@ FizzBuzzAPI is a .NET 8 Web API that accepts an array of values and outputs "Fiz
 - [Usage](#usage)
 - [Running Tests](#running-tests)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Introduction
@@ -68,7 +67,7 @@ Content-Type: application/json
 ["1", "3", "5", "15", "A", "23"]
 ```
 
-**### Example Response**
+### Example Response
 
 ```
 [
@@ -91,3 +90,15 @@ Content-Type: application/json
   }
 ]
 ```
+## Running Tests
+To run the unit tests, use the following command:
+```sh
+dotnet test
+```
+## Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Ensure that your code adheres to the project's coding standards and includes relevant tests.
+
+## Contact
+Your Name - lavanyab024@gmail.com
+
+Project Link: [https://github.com/yourusername/FizzBuzzAPI](https://github.com/LavanyaB024/FizzBuzz)
