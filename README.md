@@ -57,17 +57,20 @@ FizzBuzzAPI is designed to demonstrate SOLID principles, dependency injection, f
 4. Open your browser and navigate to `https://localhost:7252/swagger` to view the Swagger documentation and test the API.
 
 ## Usage
-You can use tools like [Postman](https://www.postman.com/) or cURL to send requests to the API.
+You can use tools like [Postman](https://www.postman.com/) to send requests to the API.
 
 ### Example Request
 
 POST api/FizzBuzz
 Content-Type: application/json
 
+```
 ["1", "3", "5", "15", "A", "23"]
+```
 
 **### Example Response**
 
+```
 [
   {
     "result": "1",
@@ -87,3 +90,4 @@ Content-Type: application/json
     "operation": ["Invalid item"]
   }
 ]
+```
